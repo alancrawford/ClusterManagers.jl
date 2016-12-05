@@ -22,7 +22,7 @@ function launch(manager::Union{PBSManager, SGEManager, QRSHManager},
         exename = params[:exename]
         exeflags = params[:exeflags]
         home = ENV["HOME"]
-        tails = /share/apps/econ/acapp/acrawford/julia-tails
+        tails = "/share/apps/econ/acapp/acrawford/julia-tails"
         isPBS = isa(manager, PBSManager)
 
         if manager.queue == ""
