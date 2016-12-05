@@ -22,6 +22,7 @@ function launch(manager::Union{PBSManager, SGEManager, QRSHManager},
         exename = params[:exename]
         exeflags = params[:exeflags]
         home = ENV["HOME"]
+        tails = /share/apps/econ/acapp/acrawford/julia-tails
         isPBS = isa(manager, PBSManager)
 
         if manager.queue == ""
@@ -93,7 +94,7 @@ function launch(manager::Union{PBSManager, SGEManager, QRSHManager},
                 id = id[1:end-2]
             end
 
-            filename(i) = isPBS ? "$home/julia-$(getpid())-$i.o$id" : "$home/julia-$(getpid()).o$id.$i"
+            filename(i) = isPBS ? "$tails/julia-$(getpid())-$i.o$id" : "$tails/julia-$(getpid()).o$id.$i"
             print("job id is $id, waiting for job to start ")
             for i=1:np
                 # wait for each output stream file to get created
